@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-sm-12 col-sm-offset-5">
+        <h1>Sign-up</h1>
+        <fieldset>
+            <form name="signupForm" novalidate>
+                <label>
+                    <input minlength="1" name="firstName" ng-maxlength="50"
+                           ng-model="signUpCtrl.user.firstName"
+                           placeholder="First Name"
+                           required
+                           type="text">
+                </label>
+                {{ signUpCtrl.user.username }}
+                <span
+                        ng-if="(signupForm.firstName.$error.minlength || signupForm.firstName.$error.required) && signupForm.firstName.$touched">
+            First name must be at least 1 characters long
+          </span>
+                <span ng-if="signupForm.username.$error.maxlength && signupForm.username.$touched">
+            First name must not be longer than 100 characters
+          </span>
+                <br>
+                <label>
+                    <input minlength="1" name="lastName" ng-maxlength="50"
+                           ng-model="signUpCtrl.user.lastName"
+                           placeholder="Last Name"
+                           required
+                           type="text">
+                </label>
+                {{ signUpCtrl.user.username }}
+                <span
+                        ng-if="(signupForm.lastName.$error.minlength || signupForm.firstName.$error.required) && signupForm.firstName.$touched">
+            Last name must be at least 1 characters long
+          </span>
+                <span ng-if="signupForm.username.$error.maxlength && signupForm.username.$touched">
+            Last name must not be longer than 50 characters
+          </span>
+                <br>
+                <label>
+                    <input name="email" ng-model="signUpCtrl.user.email" placeholder="Email"
+                           required
+                           type="email">
+                </label>
+                <span ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+            Must be a valid email address, example:'user@domain.com'
+          </span>
+                <br>
+
+                <label>
+                    <input name="phone" ng-model="signUpCtrl.user.phone" pattern="(\d{3})-(\d{3})-(\d{4})"
+                           placeholder="Phone ###-###-####"
+                           required
+                           type="text">
+                </label>
+                <span ng-if="signupForm.phone.$invalid && signupForm.phone.$touched">
+            Phone number must be in the following format ###-###-####.
+          </span>
+                <br>
+
+                <label>
+                    <input name="favDishNumber" ng-model="signUpCtrl.user.favDishNumber"
+                           placeholder="Favorite Dish Menu Number"
+                           required
+                           type="text">
+                </label>
+                <span ng-if="!signUpCtrl.favDishExists && signupForm.favDishNumber.$touched">
+            No such menu number exists
+        </span>
+                <br>
+
+                <button ng-click="signUpCtrl.signup()" ng-disabled="signupForm.$invalid || !signUpCtrl.favDishExists">
+                    Sign-up
+                </button>
+                <div ng-if="signUpCtrl.isRegistered">
+                    <h2>Your information has been saved</h2>
+                </div>
+            </form>
+        </fieldset>
+    </div>
+</div>

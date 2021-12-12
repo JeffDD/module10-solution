@@ -27,6 +27,21 @@ function MenuService($http, ApiPath) {
     });
   };
 
+  service.getMenuItem = (shortName) => {
+    if (shortName == null || shortName.trim() === "") return
+
+    return service.getMenuItems().then(items => {
+      const item = items["menu_items"].filter(item => item["short_name"] === shortName)[0]
+      return item
+    })
+  }
+
+  service.checkIfMenuItemExists = (shortName) => {
+    return service.getMenuItems()
+      .then((items) => {
+       return items["menu_items"].map(item => item["short_name"]).includes(shortName.toUpperCase())
+    })
+  }
 }
 
 

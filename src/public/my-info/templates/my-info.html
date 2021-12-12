@@ -1,0 +1,30 @@
+<div ng-if="myInfoCtrl.user.isRegistered">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h3 class="menu-item-description">{{ myInfoCtrl.user.firstName }}</h3>
+            <h3 class="menu-item-description">{{ myInfoCtrl.user.lastName }}</h3>
+            <h3 class="menu-item-description">{{ myInfoCtrl.user.email }}</h3>
+            <h3 class="menu-item-description">{{ myInfoCtrl.user.phone }}</h3>
+            <h3 class="menu-item-description">Favorite Dish</h3>
+        </div>
+    </div>
+    <div class="row">
+        <hr>
+        <div class="col-sm-5">
+            <div class="menu-item-photo">
+                <div>{{myInfoCtrl.item.short_name}}</div>
+                <img alt="{{myInfoCtrl.item.name}}" class="img-responsive" height="150"
+                     ng-src="{{myInfoCtrl.basePath}}/images/{{myInfoCtrl.item.short_name}}.jpg"
+                     width="250">
+            </div>
+        </div>
+        <div class="menu-item-description col-sm-7">
+            <h3 class="menu-item-title">{{myInfoCtrl.item.name}}</h3>
+            <p class="menu-item-details">{{myInfoCtrl.item.description}}</p>
+        </div>
+    </div>
+</div>
+<div ng-if="!myInfoCtrl.user.isRegistered">
+    <h2 class="text-center">Not Signed Up Yet. <a ui-sref="public.signup">Sign up</a> Now!</h2>
+
+</div>
