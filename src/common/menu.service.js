@@ -31,8 +31,7 @@ function MenuService($http, ApiPath) {
     if (shortName == null || shortName.trim() === "") return
 
     return service.getMenuItems().then(items => {
-      const item = items["menu_items"].filter(item => item["short_name"] === shortName)[0]
-      return item
+      return items["menu_items"].filter(item => item["short_name"] === shortName)[0]
     })
   }
 
