@@ -15,7 +15,7 @@
     $ctrl.isRegistered = false;
 
     $ctrl.checkIfDishExists = () => {
-      const exists = $ctrl.itemNumbers.includes($ctrl.user.favDishNumber);
+      const exists = $ctrl.itemNumbers.includes($ctrl.user.favDishNumber.toUpperCase());
       $ctrl.favDishExists = exists;
       return exists;
     };
